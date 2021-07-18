@@ -135,3 +135,36 @@ jobs:
 
     - name: Run Dialyzer
       run: mix dialyzer --no-check
+
+  #
+  # Do coverage report with ExCoveralls
+  #
+  coveralls:
+    name: mix coveralls (Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }})
+    strategy:
+      matrix:
+        elixir: ['1.12.x']
+        include:
+        - elixir: '1.12.x'
+          otp: '24.x'
+    runs-on: ubuntu-18.04
+
+    env:
+      MIX_ENV: dev
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-elixir@v1
+      with:
+        otp-version: ${{ matrix.otp }}
+        elixir-version: ${{ matrix.elixir }}
+
+    - name: Install Dependencies
+      run: |
+        mix local.rebar --force
+        mix local.hex --force
+        mix deps.get --only=dev
+
+    - name: Run Tests
+      run: mix coveralls.github
