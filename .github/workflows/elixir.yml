@@ -39,14 +39,14 @@ jobs:
             otp: '23.x'
           - elixir: '1.12.x'
             otp: '24.x'
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     env:
       MIX_ENV: test
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
+      - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{ matrix.otp }}
           elixir-version: ${{ matrix.elixir }}
@@ -71,14 +71,14 @@ jobs:
         include:
         - elixir: '1.12.x'
           otp: '24.x'
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     env:
       MIX_ENV: dev
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-elixir@v1
+    - uses: erlef/setup-beam@v1
       with:
         otp-version: ${{ matrix.otp }}
         elixir-version: ${{ matrix.elixir }}
@@ -103,14 +103,14 @@ jobs:
         include:
         - elixir: '1.12.x'
           otp: '24.x'
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     env:
       MIX_ENV: dev
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-elixir@v1
+    - uses: erlef/setup-beam@v1
       with:
         otp-version: ${{ matrix.otp }}
         elixir-version: ${{ matrix.elixir }}
@@ -125,7 +125,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: priv/plts
-        key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-${{ hashFiles('**/mix.lock') }}
+        key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-v2-${{ hashFiles('**/mix.lock') }}
 
     - name: Generate PLTs
       if: steps.fetch-plt-cache.outputs.cache-hit != 'true'
@@ -147,7 +147,7 @@ jobs:
         include:
         - elixir: '1.12.x'
           otp: '24.x'
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     env:
       MIX_ENV: dev
@@ -155,7 +155,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-elixir@v1
+    - uses: erlef/setup-beam@v1
       with:
         otp-version: ${{ matrix.otp }}
         elixir-version: ${{ matrix.elixir }}
