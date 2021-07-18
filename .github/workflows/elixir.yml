@@ -39,7 +39,7 @@ jobs:
             otp: '23.x'
           - elixir: '1.12.x'
             otp: '24.x'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
 
     env:
       MIX_ENV: test
@@ -71,7 +71,7 @@ jobs:
         include:
         - elixir: '1.12.x'
           otp: '24.x'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
 
     env:
       MIX_ENV: dev
@@ -103,7 +103,7 @@ jobs:
         include:
         - elixir: '1.12.x'
           otp: '24.x'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
 
     env:
       MIX_ENV: dev
@@ -147,7 +147,7 @@ jobs:
         include:
         - elixir: '1.12.x'
           otp: '24.x'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
 
     env:
       MIX_ENV: dev
