@@ -1,5 +1,7 @@
 defmodule Trigger do
-  @moduledoc false
+  @moduledoc """
+  A simple way to sync between processes.
+  """
 
   @enforce_keys [:ref, :receiver]
   defstruct [:ref, :receiver]
