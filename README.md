@@ -1,6 +1,7 @@
 # Trigger
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/sega-yarkin/trigger/Elixir%20Tests?style=flat-square)](https://github.com/sega-yarkin/trigger/actions/workflows/elixir.yml)
 [![Hex.pm](https://img.shields.io/hexpm/v/trigger.svg?style=flat-square)](https://hex.pm/packages/trigger)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-blue.svg?style=flat-square)](https://hexdocs.pm/trigger/)
 [![Coveralls](https://img.shields.io/coveralls/github/sega-yarkin/trigger?style=flat-square)](https://coveralls.io/github/sega-yarkin/trigger?branch=master)
 [![codebeat badge](https://codebeat.co/badges/6d3a8c56-976b-45c8-bca6-dd87720b1f03)](https://codebeat.co/projects/github-com-sega-yarkin-trigger-master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
