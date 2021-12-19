@@ -11,7 +11,7 @@ jobs:
     name: mix test (Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }})
     strategy:
       matrix:
-        elixir: ['1.5.0', '1.5.3', '1.6.6', '1.6.x', '1.7.4', '1.8.2', '1.9.4', '1.10.4', '1.10.x', '1.11.4', '1.11.x', '1.12.2', '1.12.x']
+        elixir: ['1.5.0', '1.5.3', '1.6.6', '1.6.x', '1.7.4', '1.8.2', '1.9.4', '1.10.4', '1.10.x', '1.11.4', '1.11.x', '1.12.3', '1.12.x', '1.13.1', '1.13.x']
         include:
           - elixir: '1.5.0'
             otp: '20.x'
@@ -35,9 +35,13 @@ jobs:
             otp: '22.x'
           - elixir: '1.11.x'
             otp: '23.x'
-          - elixir: '1.12.2'
+          - elixir: '1.12.3'
             otp: '23.x'
           - elixir: '1.12.x'
+            otp: '24.x'
+          - elixir: '1.13.1'
+            otp: '23.x'
+          - elixir: '1.13.x'
             otp: '24.x'
     runs-on: ubuntu-20.04
 
@@ -67,9 +71,9 @@ jobs:
     name: mix credo (Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }})
     strategy:
       matrix:
-        elixir: ['1.12.x']
+        elixir: ['1.13.x']
         include:
-        - elixir: '1.12.x'
+        - elixir: '1.13.x'
           otp: '24.x'
     runs-on: ubuntu-20.04
 
@@ -99,9 +103,9 @@ jobs:
     name: mix dialyzer (Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }})
     strategy:
       matrix:
-        elixir: ['1.12.x']
+        elixir: ['1.13.x']
         include:
-        - elixir: '1.12.x'
+        - elixir: '1.13.x'
           otp: '24.x'
     runs-on: ubuntu-20.04
 
@@ -125,7 +129,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: priv/plts
-        key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-v2-${{ hashFiles('**/mix.lock') }}
+        key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-v1-${{ hashFiles('**/mix.lock') }}
 
     - name: Generate PLTs
       if: steps.fetch-plt-cache.outputs.cache-hit != 'true'
@@ -143,9 +147,9 @@ jobs:
     name: mix coveralls (Elixir ${{ matrix.elixir }} OTP ${{ matrix.otp }})
     strategy:
       matrix:
-        elixir: ['1.12.x']
+        elixir: ['1.13.x']
         include:
-        - elixir: '1.12.x'
+        - elixir: '1.13.x'
           otp: '24.x'
     runs-on: ubuntu-20.04
 
