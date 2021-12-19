@@ -22,8 +22,8 @@ defmodule Trigger do
   end
 
   @spec fire(t, term) :: :ok
-  def fire(%Trigger{} = trigger, data \\ nil) do
-    send(trigger.receiver, {trigger.ref, self(), data})
+  def fire(%Trigger{receiver: receiver, ref: ref}, data \\ nil) do
+    send(receiver, {ref, self(), data})
     :ok
   end
 
