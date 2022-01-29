@@ -1,6 +1,6 @@
 defmodule TriggerTest do
   use ExUnit.Case, async: true
-  doctest Trigger
+  #doctest Trigger
 
   test "new/1" do
     pid = self()
